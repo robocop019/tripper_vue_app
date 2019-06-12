@@ -8,7 +8,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <router-link class="nav-item nav-link active" to="/">Flights<span class="sr-only">(current)</span></router-link>
-          <router-link class="nav-item nav-link" to="/">Log In</router-link>
+          <router-link class="nav-item nav-link" to="/login">Log In</router-link>
         </div>
       </div>
     </nav>
