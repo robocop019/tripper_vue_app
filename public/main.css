@@ -1,0 +1,20 @@
+body {
+  background-image: url('beige-tiles.png');
+}
+
+#tripper-header:hover {
+  color: #DEE5D6;
+}
+
+#navbar-item-1:hover, #navbar-item-2:hover {
+  color: white;
+}
+
+.flight-link {
+  text-decoration: none;
+}
+
+.flight-link:hover {
+  color: white;
+  text-decoration: none;
+}
