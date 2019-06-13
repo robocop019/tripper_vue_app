@@ -1,38 +1,34 @@
 <template>
+<body>
   <div class='login'>
-   <div class="container">
-
-      <form>
-        <center>
-          <div class="w-75 form-group">
+    <div class="container">
+      <form v-on:submit.prevent="submit()">
+        <h1>Log In</h1>
+          <div class="w-80 form-group">
             <label for="userEmail">Email address</label>
-            <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
+            <input type="email" class="form-control" v-model="email" aria-describedby="emailHelp" placeholder="Enter email">
             <small id="emailHelp" class="form-text text-muted">Please enter your full email</small>
           </div>
-        </center>
 
-        <center>
-          <div class="w-75 form-group">
+          <div class="w-80 form-group">
             <label for="userPassword">Password</label>
-            <input type="password" class="form-control" id="userPassword" placeholder="Password">
+            <input type="password" class="form-control" v-model="password" placeholder="Password">
           </div>
-        </center>
 
-          <div class="form-group form-check">
+          <!-- <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="remember me">
             <label class="form-check-label" for="remember me">Remember me</label>
-          </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button> 
+          </div> -->
+        <center><button type="submit" class="btn btn-info" value="submit">Submit</button></center>
       </form>
 
     </div>
-
   </div>
+</body>
 </template>
 
 <style>
-
+ 
 </style>
 
 <script>
@@ -41,14 +37,31 @@ import axios from 'axios'
 export default {
   data: function() {
     return {
-
+      email: '', 
+      password: '', 
+      errors: []
     };
   },
-  created: function() {
-
-  },
   methods: {
-
+  submit: function() {
+    var params = {
+      email: this.email, 
+      password: this.password 
+    };
+    axios 
+      .post("/api/sessions", params) 
+      .then(response => {
+        axios.defaults.headers.common["Authorization"] =
+          "Bearer " + response.data.jwt; 
+        localStorage.setItem("jwt", response.data.jwt); 
+        this.$router.push('/');
+      })
+      .catch(error => {
+        this.errors = ["Invalid email or password."];
+        this.email = ""; 
+        this.password = ""; 
+      }); 
+    }
   }
 };
 </script>
