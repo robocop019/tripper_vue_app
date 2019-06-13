@@ -17,8 +17,8 @@
           <tr>
             <th scope="row">{{flight['id']}}</th>
             <td> {{flight['airline']}} </td>
-            <td> {{flight['boarding_time']}} </td>
-            <td> {{flight['departure_time']}} </td>
+            <td> {{flight['formatted']['boarding_time']}} </td>
+            <td> {{flight['formatted']['departure_time']}} </td>
             <td> {{flight['departure_airport']}} </td>
             <td> {{flight['arrival_airport']}} </td>
             <td> {{flight['status']}} </td>
