@@ -1,6 +1,7 @@
 <template>
-  <div class="home">
+  <div class="tripper-show">
     <div class="container">
+      <h1> Flight #{{flight.id}} </h1>
       <table class="table table-striped table-dark">
         <thead>
           <tr>
@@ -19,8 +20,8 @@
             <td> {{flight['airline']}} </td>
             <td> {{flight['formatted']['boarding_time']}} </td>
             <td> {{flight['formatted']['departure_time']}} </td>
-            <td> {{flight['departure_airport']}} </td>
-            <td> {{flight['arrival_airport']}} </td>
+            <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['departure_airport']">{{flight['departure_airport']}} </router-link></td>
+            <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['arrival_airport']">{{flight['arrival_airport']}} </router-link></td>
             <td> {{flight['status']}} </td>
           </tr>
         </tbody>
@@ -39,7 +40,7 @@ export default {
     };
   },
   created: function() {
-    axios.get('http://localhost:3000/api/trips/' + this.$route.params.id).then(response => {
+    axios.get('/api/trips/' + this.$route.params.id).then(response => {
       this.flight = response.data;
       console.log(flight);
     });
