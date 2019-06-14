@@ -12,11 +12,19 @@
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Options
             </button>
+
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <!-- <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a> -->
+            <div v-if="this.show">
+              <a class="dropdown-item" id="login" href="/login">Action</a>
+            </div>
+            <div v-else>
+            </div>
+
               <router-link class="dropdown-item" to="/login">Log In</router-link>
+              
+
+              <!--<a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a> -->
               <router-link class="dropdown-item" to="/logout">Log Out</router-link>
               <router-link class="dropdown-item" to='/signup'>Sign Up</router-link>
             </div>
@@ -27,6 +35,26 @@
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  data: function() {
+    return {
+      show: true
+    };
+  },
+  created: function() {
+    if (localStorage.getItem('jwt')) {
+      this.show = false;
+    } 
+  },
+  methods: {
+   
+  }, 
+};
+</script>
+
+
 
 <style>
 #app {

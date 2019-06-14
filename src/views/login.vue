@@ -2,6 +2,7 @@
 <body>
   <div class='login'>
     <div class="container">
+
       <form v-on:submit.prevent="submit()">
         <h1>Log In</h1>
           <div class="w-80 form-group">
@@ -14,14 +15,9 @@
             <label for="userPassword">Password</label>
             <input type="password" class="form-control" v-model="password" placeholder="Password">
           </div>
+        <center><button type="submit" id="logged_in" class="btn btn-info" value="submit">Submit</button></center>
 
-          <!-- <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="remember me">
-            <label class="form-check-label" for="remember me">Remember me</label>
-          </div> -->
-        <center><button type="submit" class="btn btn-info" value="submit">Submit</button></center>
       </form>
-
     </div>
   </div>
 </body>
@@ -33,8 +29,24 @@
 
 <script>
 import axios from 'axios'
+import JQuery from 'jquery'
+
+let $ = JQuery
+
+// JQuery.fn.extend({
+//   disable: function(state) {
+//     return this.each(function() {
+//       this.disabled = state; 
+//     });
+//   }
+// });
 
 export default {
+  head: {
+    script: [
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js' },
+    ]
+  },
   name: 'login',
   data: function() {
     return {
@@ -43,6 +55,19 @@ export default {
       errors: []
     };
   },
+  created: function() {
+    // $('button.btn').disable(false);
+    if (localStorage.getItem('jwt')) {
+     
+      alert("You're already logged in!")
+      axios.get('/api/trips').then(response => {
+      this.flights = response.data;
+      this.$router.push('/');
+      })
+
+    }
+  }, 
+
   methods: {
     submit: function() {
       var params = {

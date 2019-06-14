@@ -44,7 +44,7 @@ export default {
     if (localStorage.getItem("jwt")) {
     axios.get('http://localhost:3000/api/trips').then(response => {
       this.flights = response.data;
-      console.log(flights);
+      // console.log(flights);
       });
     }
   },
