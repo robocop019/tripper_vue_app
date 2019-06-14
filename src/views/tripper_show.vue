@@ -3,6 +3,7 @@
     <div class="container">
       <table class="table table-striped table-dark">
         <thead>
+          
           <tr>
             <th scope="col">Flight #</th>
             <th scope="col">Airline</th>
@@ -25,25 +26,41 @@
           </tr>
         </tbody>
       </table>
+
+      <button><router-link to='/flight/:id/edit'>Update Flight</router-link> </button>
+      
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-
+    
 export default {
   data: function() {
     return {
-      flight: []
+      flight: [],
+      user: [],
+      hidden: true
     };
   },
   created: function() {
     axios.get('http://localhost:3000/api/trips/' + this.$route.params.id).then(response => {
       this.flight = response.data;
-      console.log(flight);
+      // var hidden = true 
+
     });
+        if (localStorage.getItem('is_employee') == false) {
+          this.hidden = true 
+        } else {
+          this.hidden = false;
+        }
   },
-  methods: {}
+
+  methods: {
+    updateFlight: function() {
+      
+    }
+  }
 };
 </script>

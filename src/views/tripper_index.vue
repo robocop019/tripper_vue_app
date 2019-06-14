@@ -37,9 +37,11 @@ import Vue2Filters from 'vue2-filters';
 export default {
   data: function() {
     return {
-      flights: []
+      flights: [],
+      hidden: true
     };
   },
+
   created: function() {
     if (localStorage.getItem("jwt")) {
     axios.get('http://localhost:3000/api/trips').then(response => {
@@ -48,6 +50,7 @@ export default {
       });
     }
   },
-  methods: {}
+  methods: {
+  }
 };
 </script>

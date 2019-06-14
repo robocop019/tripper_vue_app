@@ -14,12 +14,6 @@
             </button>
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <div v-if="this.show">
-              <a class="dropdown-item" id="login" href="/login">Action</a>
-            </div>
-            <div v-else>
-            </div>
-
               <router-link class="dropdown-item" to="/login">Log In</router-link>
               
 

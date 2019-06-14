@@ -29,29 +29,13 @@
 
 <script>
 import axios from 'axios'
-import JQuery from 'jquery'
-
-let $ = JQuery
-
-// JQuery.fn.extend({
-//   disable: function(state) {
-//     return this.each(function() {
-//       this.disabled = state; 
-//     });
-//   }
-// });
 
 export default {
-  head: {
-    script: [
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js' },
-    ]
-  },
-  name: 'login',
   data: function() {
     return {
       email: '', 
       password: '', 
+      user_id: '',
       errors: []
     };
   },
@@ -80,6 +64,8 @@ export default {
           axios.defaults.headers.common["Authorization"] =
             "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
+          // console.log(response.data.user_id);
+          localStorage.setItem('is_employee', response.data.is_employee);
           this.$router.push("/");
         })
         .catch(error => {
