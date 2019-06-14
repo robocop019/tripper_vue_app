@@ -1,9 +1,10 @@
 <template>
-  <div class="home">
+  <div class="home
+  ">
     <div class="container">
+      <h1>All Flights</h1>
       <table class="table table-striped table-dark">
         <thead>
-          
           <tr>
             <th scope="col">Flight #</th>
             <th scope="col">Airline</th>
@@ -15,52 +16,42 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">{{flight['id']}}</th>
+          <tr v-for="flight in flights">
+            <th scope="row"> <router-link class="flight-link" v-bind:to="'/flight/' + flight['id']">{{flight['id']}}</router-link> </th>
             <td> {{flight['airline']}} </td>
             <td> {{flight['formatted']['boarding_time']}} </td>
             <td> {{flight['formatted']['departure_time']}} </td>
-            <td> {{flight['departure_airport']}} </td>
-            <td> {{flight['arrival_airport']}} </td>
+            <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['departure_airport']">{{flight['departure_airport']}} </router-link></td>
+            <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['arrival_airport']">{{flight['arrival_airport']}} </router-link></td>
             <td> {{flight['status']}} </td>
           </tr>
         </tbody>
       </table>
-
-      <button><router-link to='/flight/:id/edit'>Update Flight</router-link> </button>
-      
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-    
+import Vue2Filters from 'vue2-filters';
+
 export default {
   data: function() {
     return {
-      flight: [],
-      user: [],
+      flights: [],
       hidden: true
     };
   },
+
   created: function() {
-    axios.get('http://localhost:3000/api/trips/' + this.$route.params.id).then(response => {
-      this.flight = response.data;
-      // var hidden = true 
-
-    });
-        if (localStorage.getItem('is_employee') == false) {
-          this.hidden = true 
-        } else {
-          this.hidden = false;
-        }
-  },
-
-  methods: {
-    updateFlight: function() {
-      
+    if (localStorage.getItem("jwt")) {
+    axios.get('/api/trips').then(response => {
+      this.flights = response.data;
+      // console.log(flights);
+      });
     }
+  },
+  methods: {
   }
 };
 </script>
