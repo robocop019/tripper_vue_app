@@ -7,15 +7,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <router-link class="nav-item nav-link active" to="/">Flights<span class="sr-only">(current)</span></router-link>
+          <router-link class="nav-item nav-link active" to="/">Flights</router-link>
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Options
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <!-- <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a> -->
               <router-link class="dropdown-item" to="/login">Log In</router-link>
               <router-link class="dropdown-item" to="/logout">Log Out</router-link>
               <router-link class="dropdown-item" to='/signup'>Sign Up</router-link>

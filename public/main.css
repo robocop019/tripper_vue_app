@@ -1,20 +1,58 @@
 body {
   background-image: url('beige-tiles.png');
+  background-image: url('https://textureshot.com/wp-content/uploads/2018/11/Cool-Website-Backgrounds-Blue-26285-ENEWS.jpg');
+  background-image: url('ice_age.png');
+  background-image: url('plane.jpg');
 }
 
 #tripper-header:hover {
-  color: #DEE5D6;
+  color: cornflowerblue;
 }
 
-#navbar-item-1:hover, #navbar-item-2:hover {
-  color: white;
+.nav-item:hover{
+  color: cornflowerblue;
 }
 
 .flight-link {
+  color: hotpink;
   text-decoration: none;
 }
 
 .flight-link:hover {
   color: white;
   text-decoration: none;
+}
+
+.airport-link {
+  color: hotpink;
+  text-decoration: none;
+}
+
+.airport-link:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.status-green {
+  color: limegreen;
+}
+
+.status-yellow {
+  color: yellow;
+}
+
+.status-red {
+  color: red;
+}
+
+.status-blue {
+  color: cornflowerblue;
+}
+
+.page-title, .departures, .arrivals {
+  border-radius: 5px;
+  display: inline;
+  background-color: #343A40;
+  color: ivory;
+  margin: 50px;
 }
