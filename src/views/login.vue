@@ -1,5 +1,4 @@
 <template>
-<body>
   <div class='login'>
     <div class="container">
       <form v-on:submit.prevent="submit()">
@@ -24,7 +23,6 @@
 
     </div>
   </div>
-</body>
 </template>
 
 <style>
