@@ -1,7 +1,7 @@
 <template>
-  <div class="home
-  ">
+  <div class="home">
     <div class="container">
+
       <h1>All Flights</h1>
       <div>
         Search by Airline: <input v-model="airlineFilter"> 
@@ -9,6 +9,8 @@
 
 
       <table class="table table-striped table-dark">
+      <h1 class="page-title">All Flights</h1>
+      <table class="table table-striped table-dark mt-2">
         <thead>
           <tr>
             <th v-on:click="setSortAttribute('id')" scope="col">{{ isAscending('id') }} Flight #</th>
@@ -28,7 +30,10 @@
             <td> {{flight['formatted']['departure_time']}} </td>
             <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['departure_airport']">{{flight['departure_airport']}} </router-link></td>
             <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['arrival_airport']">{{flight['arrival_airport']}} </router-link></td>
-            <td> {{flight['status']}} </td>
+            <td class="status-green" v-if="flight['status'] === 'On Time'"> {{flight['status']}} </td>
+            <td class="status-yellow" v-else-if="flight['status'] === 'Delayed'"> {{flight['status']}} </td>
+            <td class="status-red" v-else-if="flight['status'] === 'Cancelled'"> {{flight['status']}} </td>
+            <td class="status-blue" v-else-if="flight['status'] === 'Departed'"> {{flight['status']}} </td>
           </tr>
         </tbody>
       </table>
