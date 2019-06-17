@@ -45,12 +45,11 @@ export default {
     };
   },
   created: function() {
-    // if (localStorage.getItem("jwt")) {
+    if (localStorage.getItem("jwt")) {
     axios.get('/api/trips').then(response => {
       this.flights = response.data;
-      console.log(flights);
       });
-    // }
+    }
   },
   methods: {}
 };

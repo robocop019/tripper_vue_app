@@ -29,6 +29,8 @@
           </tr>
         </tbody>
       </table>
+
+      <button><router-link v-bind:to="'/flight/' + flight['id'] + '/edit'">Edit</router-link></button>
     </div>
   </div>
 </template>
@@ -45,7 +47,7 @@ export default {
   created: function() {
     axios.get('/api/trips/' + this.$route.params.id).then(response => {
       this.flight = response.data;
-      console.log(flight);
+      // console.log(flight);
     });
   },
   methods: {}
