@@ -1,6 +1,5 @@
 <template>
-  <div class="home
-  ">
+  <div class="tripper-index">
     <div class="container">
       <h1>All Flights</h1>
       <table class="table table-striped table-dark">
@@ -21,8 +20,8 @@
             <td> {{flight['airline']}} </td>
             <td> {{flight['formatted']['boarding_time']}} </td>
             <td> {{flight['formatted']['departure_time']}} </td>
-            <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['departure_airport']">{{flight['departure_airport']}} </router-link></td>
-            <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['arrival_airport']">{{flight['arrival_airport']}} </router-link></td>
+            <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['airport_info']['departure_airport']">{{flight['airport_info']['departure_airport']}} </router-link></td>
+            <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['airport_info']['arrival_airport']">{{flight['airport_info']['arrival_airport']}} </router-link></td>
             <td> {{flight['status']}} </td>
           </tr>
         </tbody>
@@ -45,11 +44,15 @@ export default {
 
   created: function() {
     if (localStorage.getItem("jwt")) {
-    axios.get('/api/trips').then(response => {
-      this.flights = response.data;
-      // console.log(flights);
-      });
+      var func = response => {
+        this.flights = response.data;
+        console.log('somthing');
+      }
+
+      axios.get('/api/trips').then(func);
     }
+
+    console.log('fsdf');
   },
   methods: {
   }

@@ -19,17 +19,21 @@
           <tr>
             <th scope="row">{{flight['id']}}</th>
             <td> {{flight['airline']}} </td>
-            <td> {{flight['formatted']['boarding_time']}} </td>
+            <td> {{ flight['formatted']['boarding_time'] }} </td>
             <td> {{flight['formatted']['departure_time']}} </td>
-            <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['departure_airport']">{{flight['departure_airport']}} </router-link></td>
-            <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['arrival_airport']">{{flight['arrival_airport']}} </router-link></td>
+            <td>
+              <router-link class="airport-link" v-bind:to="'/airport/' + flight['info']['departure_airport']">{{flight['info']['departure_airport']}} </router-link>
+            </td>
+            <td>
+              <router-link class="airport-link" v-bind:to="'/airport/' + flight['info']['arrival_airport']">{{flight['info']['arrival_airport']}} </router-link>
+            </td>
             <td> {{flight['status']}} </td>
           </tr>
         </tbody>
       </table>
+    
+        <button><router-link class="update-flight" v-bind:to="'/flight/' + this.$route.params.id + '/edit'">Update Flight</router-link></button> 
 
-      <button><router-link to='/flight/:id/edit'>Update Flight</router-link> </button>
-      
     </div>
   </div>
 </template>
@@ -38,30 +42,25 @@
 import axios from "axios";
     
 export default {
+  
   data: function() {
+     if (localStorage.getItem('is_employee') === true) {
+        console.log("I'm an admin");
+      }
     return {
       flight: [],
       user: [],
-      hidden: true
+      // is_employee: localStorage.getItem('is_employee')
     };
   },
   created: function() {
     axios.get('/api/trips/' + this.$route.params.id).then(response => {
       this.flight = response.data;
-      // var hidden = true 
-
     });
-        if (localStorage.getItem('is_employee') == false) {
-          this.hidden = true 
-        } else {
-          this.hidden = false;
-        }
+    
   },
-
   methods: {
-    updateFlight: function() {
-      
-    }
+    
   }
 };
 </script>

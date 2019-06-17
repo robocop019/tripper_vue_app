@@ -15,7 +15,7 @@
             <label for="userPassword">Password</label>
             <input type="password" class="form-control" v-model="password" placeholder="Password">
           </div>
-        <center><button type="submit" id="logged_in" class="btn btn-info" value="submit">Submit</button></center>
+        <center><button type="submit" class="btn btn-info" value="submit">Submit</button></center>
 
       </form>
     </div>
@@ -64,7 +64,6 @@ export default {
           axios.defaults.headers.common["Authorization"] =
             "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
-          // console.log(response.data.user_id);
           localStorage.setItem('is_employee', response.data.is_employee);
           this.$router.push("/");
         })
