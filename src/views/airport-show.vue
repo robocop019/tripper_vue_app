@@ -111,10 +111,10 @@ export default {
     axios.get('/api/trips').then(response => {
       this.flights = response.data;
       console.log(this.flights);
-      this.airport_code = this.$route.params.id;
+      this.airport_code = this.$route.params.id.toUpperCase();
       console.log(this.airport_code);
     });
-    axios.get('/api/airports/' + this.$route.params.id).then(response => {
+    axios.get('/api/airports/' + this.$route.params.id.toUpperCase()).then(response => {
       this.airport = response.data;
       console.log(this.airport);
     });
