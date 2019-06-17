@@ -7,13 +7,20 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <router-link class="nav-item nav-link active" to="/">Flights</router-link>
+          <router-link class="nav-item nav-link active" to="/">Flights<span class="sr-only">(current)</span></router-link>
+          <router-link class="nav-item nav-link active" to="/airports">Departures/Arrivals<span class="sr-only">(current)</span></router-link>
+          <router-link class="nav-item nav-link active" to="/flight/new">Create Flight<span class="sr-only">(current)</span></router-link>
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Options
             </button>
+
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <router-link class="dropdown-item" to="/login">Log In</router-link>
+              
+
+              <!--<a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a> -->
               <router-link class="dropdown-item" to="/logout">Log Out</router-link>
               <router-link class="dropdown-item" to='/signup'>Sign Up</router-link>
             </div>
@@ -24,6 +31,25 @@
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  data: function() {
+    return {
+      // show: true
+    };
+  },
+  created: function() {
+    // if (localStorage.getItem('jwt')) {
+    //   this.show = false;
+    // } 
+  },
+  methods: {
+   
+  }, 
+};
+</script>
+
 
 <style>
 #app {

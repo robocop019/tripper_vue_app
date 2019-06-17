@@ -2,6 +2,7 @@
 
   <div class='login'>
     <div class="container">
+
       <form v-on:submit.prevent="submit()">
         <h1>Log In</h1>
           <div class="w-80 form-group">
@@ -14,14 +15,9 @@
             <label for="userPassword">Password</label>
             <input type="password" class="form-control" v-model="password" placeholder="Password">
           </div>
-
-          <!-- <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="remember me">
-            <label class="form-check-label" for="remember me">Remember me</label>
-          </div> -->
         <center><button type="submit" class="btn btn-info" value="submit">Submit</button></center>
-      </form>
 
+      </form>
     </div>
   </div>
 
@@ -35,14 +31,27 @@
 import axios from 'axios'
 
 export default {
-  name: 'login',
   data: function() {
     return {
       email: '', 
       password: '', 
+      user_id: '',
       errors: []
     };
   },
+  created: function() {
+    // $('button.btn').disable(false);
+    if (localStorage.getItem('jwt')) {
+     
+      alert("You're already logged in!")
+      axios.get('/api/trips').then(response => {
+      this.flights = response.data;
+      this.$router.push('/');
+      })
+
+    }
+  }, 
+
   methods: {
     submit: function() {
       var params = {
@@ -55,6 +64,7 @@ export default {
           axios.defaults.headers.common["Authorization"] =
             "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
+          localStorage.setItem('is_employee', response.data.is_employee);
           this.$router.push("/");
         })
         .catch(error => {
