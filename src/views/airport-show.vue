@@ -2,6 +2,8 @@
   <div class="airport-show">
     <div class="container">
       <h1 class="page-title"> {{airport.name}} </h1>
+      <br>
+      <br>
       <div class="row">
         <div class="col-md-6">
           <h2 class="departures">Departures</h2>
@@ -61,23 +63,27 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <h2>Nearby Hotels</h2>
+          <h2 class="hotels">Nearby Hotels</h2>
+          <br>
+          <br>
           <ul class="list-group list-group-flush list-hover">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
+            <li class="list-group-item list-group-item-dark">Cras justo odio</li>
+            <li class="list-group-item list-group-item-dark">Dapibus ac facilisis in</li>
+            <li class="list-group-item list-group-item-dark">Morbi leo risus</li>
+            <li class="list-group-item list-group-item-dark">Porta ac consectetur ac</li>
+            <li class="list-group-item list-group-item-dark">Vestibulum at eros</li>
           </ul>
         </div>
         <div class="col-md-6">
-          <h2>Nearby Restaurants</h2>
+          <h2 class="restaurants">Nearby Restaurants</h2>
+          <br>
+          <br>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
+            <li class="list-group-item list-group-item-dark">Cras justo odio</li>
+            <li class="list-group-item list-group-item-dark">Dapibus ac facilisis in</li>
+            <li class="list-group-item list-group-item-dark">Morbi leo risus</li>
+            <li class="list-group-item list-group-item-dark">Porta ac consectetur ac</li>
+            <li class="list-group-item list-group-item-dark">Vestibulum at eros</li>
           </ul>
         </div>
       </div>
