@@ -49,10 +49,9 @@ body {
   color: cornflowerblue;
 }
 
-.page-title, .departures, .arrivals {
+.page-title, .departures, .arrivals, .hotels, .restaurants {
   border-radius: 5px;
   display: inline;
   background-color: #343A40;
   color: ivory;
-  margin: 50px;
 }
