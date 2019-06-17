@@ -1,11 +1,11 @@
 <template>
   <div class="airport-show">
     <div class="container">
-      <h1> {{airport.name}} </h1>
+      <h1 class="page-title"> {{airport.name}} </h1>
       <div class="row">
         <div class="col-md-6">
-          <h1>Departures</h1>
-          <table class="table table-striped table-dark table-hover">
+          <h2 class="departures">Departures</h2>
+          <table class="table table-striped table-dark table-hover mt-2">
             <thead>
               <tr>
                 <th scope="col">Flight #</th>
@@ -23,14 +23,17 @@
                 <td> {{flight['formatted']['boarding_time']}} </td>
                 <td> {{flight['formatted']['departure_time']}} </td>
                 <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['arrival_airport']">{{flight['arrival_airport']}} </router-link></td>
-                <td> {{flight['status']}} </td>
+                <td class="status-green" v-if="flight['status'] === 'On Time'"> {{flight['status']}} </td>
+                <td class="status-yellow" v-else-if="flight['status'] === 'Delayed'"> {{flight['status']}} </td>
+                <td class="status-red" v-else-if="flight['status'] === 'Cancelled'"> {{flight['status']}} </td>
+                <td class="status-blue" v-else-if="flight['status'] === 'Departed'"> {{flight['status']}} </td>
               </tr>
             </tbody>
           </table>
         </div>
         <div class="col-md-6">
-          <h1>Arrivals</h1>
-          <table class="table table-striped table-dark table-hover">
+          <h2 class="arrivals">Arrivals</h2>
+          <table class="table table-striped table-dark table-hover mt-2">
             <thead>
               <tr>
                 <th scope="col">Flight #</th>
@@ -40,13 +43,17 @@
                 <th scope="col">Status</th>
               </tr>
             </thead>
+
             <tbody>
               <tr v-for="flight in flights" v-if="flight.arrival_airport === airport_code">
                 <th scope="row"> <router-link class="flight-link" v-bind:to="'/flight/' + flight['id']">{{flight['id']}}</router-link> </th>
                 <td> {{flight['airline']}} </td>
                 <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['departure_airport']">{{flight['departure_airport']}} </router-link></td>
                 <td> {{flight['formatted']['arrival_time']}} </td>
-                <td> {{flight['status']}} </td>
+                <td class="status-green" v-if="flight['status'] === 'On Time'"> {{flight['status']}} </td>
+                <td class="status-yellow" v-else-if="flight['status'] === 'Delayed'"> {{flight['status']}} </td>
+                <td class="status-red" v-else-if="flight['status'] === 'Cancelled'"> {{flight['status']}} </td>
+                <td class="status-blue" v-else-if="flight['status'] === 'Departed'"> {{flight['status']}} </td>
               </tr>
             </tbody>
           </table>
@@ -54,7 +61,24 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          
+          <h2>Nearby Hotels</h2>
+          <ul class="list-group list-group-flush list-hover">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h2>Nearby Restaurants</h2>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
         </div>
       </div>
     </div>
