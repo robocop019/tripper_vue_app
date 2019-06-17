@@ -23,11 +23,11 @@
       </div>
 
       <div>
-        Departure Airport:: <input v-model="trip.info.departure_airport">
+        Departure Airport:: <input v-model="trip.departure_airport">
       </div>
 
       <div>
-        Arrival Airport: <input v-model="trip.info.arrival_airport">
+        Arrival Airport: <input v-model="trip.arrival_airport">
       </div>
 
       <input type="submit" value = "Update Flight">
@@ -74,7 +74,7 @@ export default {
                     };
 
       axios.patch('api/trips/' + this.$route.params.id, params).then(response => {
-        this.$router.push('/trips/' + this.$route.params.id);
+        this.$router.push('/');
       })
     }
   }

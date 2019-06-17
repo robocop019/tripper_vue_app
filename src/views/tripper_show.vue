@@ -22,10 +22,10 @@
             <td> {{ flight['formatted']['boarding_time'] }} </td>
             <td> {{flight['formatted']['departure_time']}} </td>
             <td>
-              <router-link class="airport-link" v-bind:to="'/airport/' + flight['info']['departure_airport']">{{flight['info']['departure_airport']}} </router-link>
+              <router-link class="airport-link" v-bind:to="'/airport/' + flight['departure_airport']">{{flight['departure_airport']}} </router-link>
             </td>
             <td>
-              <router-link class="airport-link" v-bind:to="'/airport/' + flight['info']['arrival_airport']">{{flight['info']['arrival_airport']}} </router-link>
+              <router-link class="airport-link" v-bind:to="'/airport/' + flight['arrival_airport']">{{flight['arrival_airport']}} </router-link>
             </td>
             <td> {{flight['status']}} </td>
           </tr>
