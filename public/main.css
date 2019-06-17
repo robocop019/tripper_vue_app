@@ -1,11 +1,16 @@
 body {
-  background-image: url('beige-tiles.png');
-  background-image: url('https://textureshot.com/wp-content/uploads/2018/11/Cool-Website-Backgrounds-Blue-26285-ENEWS.jpg');
-  background-image: url('ice_age.png');
   background-image: url('plane.jpg');
 }
 
 #tripper-header:hover {
+  color: cornflowerblue;
+}
+
+#navbar-flights:hover {
+  color: cornflowerblue;
+}
+
+.table-header:hover {
   color: cornflowerblue;
 }
 

@@ -2,24 +2,23 @@
   <div class="home">
     <div class="container">
 
-      <h1>All Flights</h1>
+      <h1 class="page-title">All Flights</h1>
+      <br>
+      <br>
       <div>
         Search by Airline: <input v-model="airlineFilter"> 
       </div>
 
-
-      <table class="table table-striped table-dark">
-      <h1 class="page-title">All Flights</h1>
       <table class="table table-striped table-dark mt-2">
         <thead>
           <tr>
-            <th v-on:click="setSortAttribute('id')" scope="col">{{ isAscending('id') }} Flight #</th>
-            <th v-on:click="setSortAttribute('airline')" scope="col">{{ isAscending('airline') }} Airline</th>
-            <th v-on:click="setSortAttribute('boarding_time')" scope="col">{{ isAscending('boarding_time') }} Boarding Time</th>
-            <th v-on:click="setSortAttribute('departure_time')" scope="col">{{ isAscending('departure_time') }} Departure Time</th>
-            <th v-on:click="setSortAttribute('departure_airport')" scope="col">{{ isAscending('departure_airport') }} Departure</th>
-            <th v-on:click="setSortAttribute('arrival_airport')" scope="col">{{ isAscending('arrival_airport') }} Arrival</th>
-            <th v-on:click="setSortAttribute('status')" scope="col">{{ isAscending('status') }} Status</th>
+            <th class="table-header" v-on:click="setSortAttribute('id')" scope="col">{{ isAscending('id') }} Flight #</th>
+            <th class="table-header" v-on:click="setSortAttribute('airline')" scope="col">{{ isAscending('airline') }} Airline</th>
+            <th class="table-header" v-on:click="setSortAttribute('boarding_time')" scope="col">{{ isAscending('boarding_time') }} Boarding Time</th>
+            <th class="table-header" v-on:click="setSortAttribute('departure_time')" scope="col">{{ isAscending('departure_time') }} Departure Time</th>
+            <th class="table-header" v-on:click="setSortAttribute('departure_airport')" scope="col">{{ isAscending('departure_airport') }} Departure</th>
+            <th class="table-header" v-on:click="setSortAttribute('arrival_airport')" scope="col">{{ isAscending('arrival_airport') }} Arrival</th>
+            <th class="table-header" v-on:click="setSortAttribute('status')" scope="col">{{ isAscending('status') }} Status</th>
           </tr>
         </thead>
         <tbody>
@@ -50,7 +49,7 @@ export default {
     return {
       flights: [],
       airlineFilter: "",
-      sortAttribute: "airline",
+      sortAttribute: "id",
       sortAscending: 1
     };
   },
@@ -73,7 +72,7 @@ export default {
     },
     isAscending: function(inputAttribute) {
       if (this.sortAttribute === inputAttribute) {
-        return this.sortAscending === 1 ? "^" : "v";
+        return this.sortAscending === 1 ? "⬆️" : "⬇️";
       }
     }
   },

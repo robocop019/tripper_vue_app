@@ -7,7 +7,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <router-link class="nav-item nav-link active" to="/">Flights</router-link>
+          <router-link id="navbar-flights" class="nav-item nav-link active" to="/">Flights</router-link>
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Options
