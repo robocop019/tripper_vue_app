@@ -2,7 +2,9 @@
   <div class="home">
     <div class="container">
 
-      <h1>All Flights</h1>
+      <h1 class="page-title">All Flights</h1>
+      <br>
+      <br>
       <div>
         Search by Airline: <input v-model="airlineFilter"> 
       </div>
@@ -46,7 +48,7 @@ export default {
     return {
       flights: [],
       airlineFilter: "",
-      sortAttribute: "airline",
+      sortAttribute: "id",
       sortAscending: 1
     };
   },
@@ -69,7 +71,7 @@ export default {
     },
     isAscending: function(inputAttribute) {
       if (this.sortAttribute === inputAttribute) {
-        return this.sortAscending === 1 ? "^" : "v";
+        return this.sortAscending === 1 ? "⬆️" : "⬇️";
       }
     }
   },
