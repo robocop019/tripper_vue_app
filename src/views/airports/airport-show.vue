@@ -131,7 +131,7 @@ export default {
       this.airport_code = this.$route.params.id;
       // console.log(this.airport_code);
     });
-    axios.get('/api/airports/' + this.$route.params.id).then(response => {
+    axios.get('/api/airports/' + this.$route.params.id.toUpperCase()).then(response => {
       this.airport = response.data;
       this.restaurants = response.data;
       this.hotels = response.data;

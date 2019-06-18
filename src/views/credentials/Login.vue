@@ -1,5 +1,4 @@
 <template>
-
   <div class='login'>
     <div class="container">
 
@@ -20,7 +19,6 @@
       </form>
     </div>
   </div>
-
 </template>
 
 <style>

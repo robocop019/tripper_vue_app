@@ -1,7 +1,9 @@
 <template>
   <div class="tripper-show">
     <div class="container">
-      <h1> Flight #{{flight.id}} </h1>
+      <h1 class="page-title"> Flight #{{flight.id}} </h1>
+      <br>
+      <br>
       <table class="table table-striped table-dark">
         <thead>
           <tr>
