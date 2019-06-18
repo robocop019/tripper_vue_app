@@ -68,15 +68,15 @@
           <br>
           <br>
           <ul class="list-group list-group-flush list-hover">
-            <div v-for="hotel in airport">
-              <div v-for="name in hotel['list']">
-                <li class="list-group-item list-group-item-dark">
-                  {{ name['name'] }}
+            <div v-for="hotels_nearby in hotels">
+              <div v-for="hotel in hotels_nearby['list']">
+                <li class="list-group-item list-group-item-dark" v-if="hotel['types'].indexOf('lodging') !== -1">
+                  {{ hotel['name'] }}
                     <br>
-                  {{ name['vicinity'] }}
-                  Rating: {{ name['rating'] }}
+                  {{ hotel['vicinity'] }}
+                  Rating: {{ hotel['rating'] }}
                     <br>
-                  Total Reviews: {{ name['user_ratings_total'] }}
+                  Total Reviews: {{ hotel['user_ratings_total'] }}
                 </li>
               </div>
           </div>
@@ -87,7 +87,7 @@
           <br>
           <br>
           <ul class="list-group list-group-flush">
-            <div v-for="restaurant in airport">
+            <div v-for="restaurant in restaurants">
               <div v-for="food in restaurant['list']">
             <li class="list-group-item list-group-item-dark" v-if="food['types'].indexOf('food') !== -1">
               {{ food['name'] }}
@@ -129,12 +129,12 @@ export default {
       this.flights = response.data;
       // console.log(this.flights);
       this.airport_code = this.$route.params.id;
-      console.log(this.airport_code);
+      // console.log(this.airport_code);
     });
     axios.get('/api/airports/' + this.$route.params.id).then(response => {
       this.airport = response.data;
-      // console.log(this.airport);
-      // console.log(response);
+      this.restaurants = response.data;
+      this.hotels = response.data;
     });
   },
   methods: {},
@@ -148,6 +148,9 @@ export default {
     });
     axios.get('/api/airports/' + to.params.id).then(response => {
       this.airport = response.data;
+      this.restaurants = response.data;
+      this.hotels = response.data;
+
       // console.log(this.airport);
     });
     next();

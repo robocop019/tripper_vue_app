@@ -60,7 +60,6 @@ export default {
   },
   methods: {
     submit: function() {
-      console.log('fdsfs');
       var params = {
                     status: this.newStatus, 
                     airline: this.newAirline,
@@ -71,8 +70,8 @@ export default {
                     arrival_airport: this.newArrivalAirport
                     };
 
-      axios.post('api/trips').then(response => {
-        this.$router.push('/') 
+      axios.post('api/trips', params).then(response => {
+        this.$router.push('/flights') 
       })
     }
   }
