@@ -8,7 +8,6 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <router-link class="nav-item nav-link active" to="/">Flights<span class="sr-only">(current)</span></router-link>
-          <router-link class="nav-item nav-link active" to="/airports">Departures/Arrivals<span class="sr-only">(current)</span></router-link>
           <router-link class="nav-item nav-link active" to="/flight/new">Create Flight<span class="sr-only">(current)</span></router-link>
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

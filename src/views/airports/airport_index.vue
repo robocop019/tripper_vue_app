@@ -86,8 +86,10 @@ export default {
   created: function() {
     axios.get('/api/trips').then(response => {
       this.flights = response.data;
-      this.departure_code = this.flights.departure_airport;
-      this.arrival_code = this.flights.arrival_airport;
+      this.departure_code = this.$route.params.id;
+      this.airport_code = this.flights.arrival_airport;
+
+      
       // console.log(this.airport_code);
     });
     axios.get('/api/airports/' + this.$route.arrival_code).then(response => {
