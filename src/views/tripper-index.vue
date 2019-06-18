@@ -20,18 +20,18 @@
               <th v-on:click="setSortAttribute('status')" scope="col">{{ isAscending('status') }} Status</th>
             </tr>
           </thead>
-          <tbody is="transition-group" appear enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+          <tbody is="transition-group" appear enter-active-class="animated slideInLeft" leave-active-class="animated lightSpeedOut">
               <tr v-for="flight in orderBy(filterBy(flights, airlineFilter, 'airline'), sortAttribute, sortAscending)" v-bind:key="flight.id">
-                <th scope="row"> <router-link class="flight-link" v-bind:to="'/flight/' + flight['id']">{{flight['id']}}</router-link> </th>
-                <td> {{flight['airline']}} </td>
-                <td> {{flight['formatted']['boarding_time']}} </td>
-                <td> {{flight['formatted']['departure_time']}} </td>
-                <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['departure_airport']">{{flight['departure_airport']}} </router-link></td>
-                <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['arrival_airport']">{{flight['arrival_airport']}} </router-link></td>
-                <td class="status-green" v-if="flight['status'] === 'On Time'"> {{flight['status']}} </td>
-                <td class="status-yellow" v-else-if="flight['status'] === 'Delayed'"> {{flight['status']}} </td>
-                <td class="status-red" v-else-if="flight['status'] === 'Cancelled'"> {{flight['status']}} </td>
-                <td class="status-blue" v-else-if="flight['status'] === 'Departed'"> {{flight['status']}} </td>
+                  <td scope="row"> <router-link class="flight-link" v-bind:to="'/flight/' + flight['id']">{{flight['id']}}</router-link> </td>
+                  <td> {{flight['airline']}} </td>
+                  <td> {{flight['formatted']['boarding_time']}} </td>
+                  <td> {{flight['formatted']['departure_time']}} </td>
+                  <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['departure_airport']">{{flight['departure_airport']}} </router-link></td>
+                  <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['arrival_airport']">{{flight['arrival_airport']}} </router-link></td>
+                  <td class="status-green" v-if="flight['status'] === 'On Time'"> {{flight['status']}} </td>
+                  <td class="status-yellow" v-else-if="flight['status'] === 'Delayed'"> {{flight['status']}} </td>
+                  <td class="status-red" v-else-if="flight['status'] === 'Cancelled'"> {{flight['status']}} </td>
+                  <td class="status-blue" v-else-if="flight['status'] === 'Departed'"> {{flight['status']}} </td>
               </tr>
           </tbody>
         </table>
