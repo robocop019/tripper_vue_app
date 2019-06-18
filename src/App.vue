@@ -17,9 +17,6 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <router-link class="dropdown-item" to="/login">Log In</router-link>
               
-
-              <!--<a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a> -->
               <router-link class="dropdown-item" to="/logout">Log Out</router-link>
               <router-link class="dropdown-item" to='/signup'>Sign Up</router-link>
             </div>

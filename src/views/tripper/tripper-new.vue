@@ -1,37 +1,47 @@
 <template>
   <div class='tripper-new'>
     <h1>Create a Flight</h1>
-      <form v-on:submit.prevent="submit()">
-        <div>
-          Status: <input v-model="newStatus">
-        </div>
 
-        <div>
-          Airline: <input v-model="newAirline">
-        </div>
+<div class='container'>
+    <form v-on:submit.prevent="submit()">
+      <div class="form-group">
+        <label for="status">Flight Status</label>
+        <input v-model="status" type="text" class="form-control" id="status" aria-describedby="flightHelp" placeholder="Status">
+      </div>
 
-        <div>
-          Boarding Time: <input v-model="newBoardingTime">
-        </div>
+      <div class="form-group">
+        <label for="airline">Airline</label>
+        <input v-model="airline" type="text" class="form-control" id="airline" aria-describedby="flightHelp" placeholder='Airline'>
+      </div>
 
-        <div>
-          Arrival Time: <input v-model="newArrivalTime">
-        </div>
-        
-        <div>
-          Departure Time: <input v-model="newDepartureTime">
-        </div>
+      <div class="form-group">
+        <label for="boarding_time">Boarding Time</label>
+        <input v-model="boarding_time" type="text" class="form-control" id="boarding_time" aria-describedby="flightHelp" placeholder='trip.boarding_time'>
+      </div>
 
-        <div>
-          Arrival Airport: <input v-model="newArrivalAirport">
-        </div>
+      <div class="form-group">
+        <label for="arrival_time">Arrival Time</label>
+        <input v-model="arrival_time" type="text" class="form-control" id="arrival_time" aria-describedby="flightHelp" placeholder="Arrival_time">
+      </div>
+      
+      <div class="form-group">
+        <label for="departure_time">Departure Time</label>
+        <input v-model="departure_time" type="text" class="form-control" id="departure_time" aria-describedby="flightHelp" placeholder="Departure_time">
+      </div>
 
-        <div>
-          Departure Airport: <input v-model="newDepartureAirport">
-        </div>
+      <div class="form-group">
+        <label for="arrival_airport">Arrival Airport</label>
+        <input v-model="arrival_airport" type="text" class="form-control" id="arrival_airport" aria-describedby="flightHelp" placeholder="Aarrival Airport">
+      </div>
 
-      <input type="submit" value = "Create Flight">
+      <div class="form-group">
+        <label for="departure_airport">Departure Airport</label>
+        <input v-model="departure_airport" type="text" class="form-control" id="departure_airport" aria-describedby="flightHelp" placeholder="Departure Airport">
+      </div>
+      <button type="submit" class="btn btn-info">Create</button>
     </form>
+  </div>
+
 
   </div>
 </template>

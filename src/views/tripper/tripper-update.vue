@@ -1,56 +1,62 @@
 <template>
   <div class='tripper-update'>
-    <h1>Edit a Flight</h1>
+    <h1>Edit Flight</h1>
     <ul> 
       <li v-for="error in errors">
         {{ error }}
       </li>
     </ul>
-
+  <div class='container'>
     <form v-on:submit.prevent="submit()">
-
-      <div>
-        Status: <input v-model="flight.status">
+      <div class="form-group">
+        <label for="status">Flight Status</label>
+        <input v-model="flight.status" type="text" class="form-control" id="status" aria-describedby="flightHelp" v-bind:placeholder="trip.status">
       </div>
 
-      <div>
-        Airline: <input v-model="flight.airline">
+      <div class="form-group">
+        <label for="airline">Airline</label>
+        <input v-model="flight.airline" type="text" class="form-control" id="airline" aria-describedby="flightHelp" v-bind:placeholder='trip.airline'>
       </div>
 
-      <div>
-        Boarding Time: <input v-model="flight.boarding_time">
+      <div class="form-group">
+        <label for="boarding_time">Boarding Time</label>
+        <input v-model="flight.boarding_time" type="text" class="form-control" id="boarding_time" aria-describedby="flightHelp" v-bind:placeholder='trip.boarding_time'>
       </div>
 
-      <div>
-        Arrival Time: <input v-model="flight.arrival_time">
+      <div class="form-group">
+        <label for="arrival_time">Arrival Time</label>
+        <input v-model="flight.arrival_time" type="text" class="form-control" id="arrival_time" aria-describedby="flightHelp" v-bind:placeholder="trip.arrival_time">
       </div>
       
-      <div>
-        Departure Time: <input v-model="flight.departure_time">
+      <div class="form-group">
+        <label for="departure_time">Departure Time</label>
+        <input v-model="flight.departure_time" type="text" class="form-control" id="departure_time" aria-describedby="flightHelp" v-bind:placeholder="trip.departure_time">
       </div>
 
-      <div>
-        Arrival Airport: <input v-model="flight.arrival_airport">
+      <div class="form-group">
+        <label for="arrival_airport">Arrival Airport</label>
+        <input v-model="flight.arrival_airport" type="text" class="form-control" id="arrival_airport" aria-describedby="flightHelp" v-bind:placeholder="trip.arrival_airport">
       </div>
 
-      <div>
-        Departure Airport: <input v-model="flight.departure_airport">
+      <div class="form-group">
+        <label for="departure_airport">Departure Airport</label>
+        <input v-model="flight.departure_airport" type="text" class="form-control" id="departure_airport" aria-describedby="flightHelp" v-bind:placeholder="trip.departure_airport">
       </div>
-
+      <button type="submit" class="btn btn-info">Update</button>
     </form>
-      
-  <button v-on:click="submit()">Update</button>
+  </div>
 
   </div>
 </template>
 
 <style>
+
 </style>
 
 <script>
 import axios from 'axios'
 
-export default {
+export default { 
   data: function() {
     return {
       errors: [],
@@ -94,3 +100,5 @@ export default {
   }
 };
 </script>
+
+

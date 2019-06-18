@@ -30,7 +30,7 @@
         </tbody>
       </table>
 
-      <button><router-link v-bind:to="'/flight/' + flight['id'] + '/edit'">Edit</router-link></button>
+      <button type="submit" class="btn btn-info"><router-link v-bind:to="'/flight/' + flight['id'] + '/edit'">Edit</router-link></button>
     </div>
   </div>
 </template>
@@ -50,6 +50,8 @@ export default {
       // console.log(flight);
     });
   },
-  methods: {}
+  methods: {
+   
+  }
 };
 </script>
