@@ -31,7 +31,10 @@
           </tr>
         </tbody>
       </table>
+
     </div>
+      <router-link v-bind:to="'/flight/' + flight['id'] + '/edit'"><button type="submit" class="btn btn-info">Edit</button></router-link>
+      <button v-on:click="deleteFlight()" class="btn btn-danger mx-2">Delete Flight</button>
   </div>
 </template>
 
@@ -47,9 +50,14 @@ export default {
   created: function() {
     axios.get('/api/trips/' + this.$route.params.id).then(response => {
       this.flight = response.data;
-      console.log(flight);
     });
   },
-  methods: {}
+  methods: {
+    deleteFlight: function() {
+      axios.delete('api/trips/' + this.$route.params.id).then(response => {
+        this.$router.push('/');
+      })
+    }
+  }
 };
 </script>

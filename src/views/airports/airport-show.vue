@@ -48,6 +48,7 @@
 
             <tbody>
               <tr v-for="flight in flights" v-if="flight.arrival_airport === airport_code">
+                {{ flight.lodging }}
                 <th scope="row"> <router-link class="flight-link" v-bind:to="'/flight/' + flight['id']">{{flight['id']}}</router-link> </th>
                 <td> {{flight['airline']}} </td>
                 <td><router-link class="airport-link" v-bind:to="'/airport/' + flight['departure_airport']">{{flight['departure_airport']}} </router-link></td>
@@ -67,11 +68,18 @@
           <br>
           <br>
           <ul class="list-group list-group-flush list-hover">
-            <li class="list-group-item list-group-item-dark">Cras justo odio</li>
-            <li class="list-group-item list-group-item-dark">Dapibus ac facilisis in</li>
-            <li class="list-group-item list-group-item-dark">Morbi leo risus</li>
-            <li class="list-group-item list-group-item-dark">Porta ac consectetur ac</li>
-            <li class="list-group-item list-group-item-dark">Vestibulum at eros</li>
+            <div v-for="hotels_nearby in hotels">
+              <div v-for="hotel in hotels_nearby['list']">
+                <li class="list-group-item list-group-item-dark" v-if="hotel['types'].indexOf('lodging') !== -1">
+                  {{ hotel['name'] }}
+                    <br>
+                  {{ hotel['vicinity'] }}
+                  Rating: {{ hotel['rating'] }}
+                    <br>
+                  Total Reviews: {{ hotel['user_ratings_total'] }}
+                </li>
+              </div>
+          </div>
           </ul>
         </div>
         <div class="col-md-6">
@@ -79,11 +87,20 @@
           <br>
           <br>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item list-group-item-dark">Cras justo odio</li>
-            <li class="list-group-item list-group-item-dark">Dapibus ac facilisis in</li>
-            <li class="list-group-item list-group-item-dark">Morbi leo risus</li>
-            <li class="list-group-item list-group-item-dark">Porta ac consectetur ac</li>
-            <li class="list-group-item list-group-item-dark">Vestibulum at eros</li>
+            <div v-for="restaurant in restaurants">
+              <div v-for="food in restaurant['list']">
+            <li class="list-group-item list-group-item-dark" v-if="food['types'].indexOf('food') !== -1">
+              {{ food['name'] }}
+                <br>
+              {{ food['vicinity'] }}
+                <br>
+              Rating: {{ food['rating'] }}
+                <br>
+              Total Reviews: {{ food['user_ratings_total'] }}
+            </li>
+            
+              </div>
+            </div>
           </ul>
         </div>
       </div>
@@ -110,13 +127,14 @@ export default {
   created: function() {
     axios.get('/api/trips').then(response => {
       this.flights = response.data;
-      console.log(this.flights);
-      this.airport_code = this.$route.params.id.toUpperCase();
-      console.log(this.airport_code);
+      // console.log(this.flights);
+      this.airport_code = this.$route.params.id;
+      // console.log(this.airport_code);
     });
     axios.get('/api/airports/' + this.$route.params.id.toUpperCase()).then(response => {
       this.airport = response.data;
-      console.log(this.airport);
+      this.restaurants = response.data;
+      this.hotels = response.data;
     });
   },
   methods: {},
@@ -124,13 +142,16 @@ export default {
   beforeRouteUpdate (to, from, next) {
     axios.get('/api/trips').then(response => {
       this.flights = response.data;
-      console.log(this.flights);
+      // console.log(this.flights);
       this.airport_code = to.params.id;
-      console.log(this.airport_code);
+      // console.log(this.airport_code);
     });
     axios.get('/api/airports/' + to.params.id).then(response => {
       this.airport = response.data;
-      console.log(this.airport);
+      this.restaurants = response.data;
+      this.hotels = response.data;
+
+      // console.log(this.airport);
     });
     next();
   }
